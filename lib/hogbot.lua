@@ -1476,9 +1476,12 @@ end
 function maround(range, ...)
     local range = range or 8
     local creatures = getcreatures()
-    local monsters = { table.unpack(...) }
+    if type(select(1, ...)) == "table" then
+        monsters = { table.unpack(...) }
+    else
+        monsters = { ... }
+    end
     local monstersAround = 0
-    
     if next(monsters) ~= nil then
         for i, name in ipairs(monsters) do
             monsters[i] = name:lower()
