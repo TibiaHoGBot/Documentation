@@ -1534,6 +1534,27 @@ function maroundrange(rangeMin, rangeMax, ...)
     return monstersAround
 end
 
+
+--- return number of selected or all monsters with x hppc and range
+--- @author  dulec
+--- @param monsters?, table
+--- @param range, number
+--- @param hppc, number
+--- @return  number
+function maroundbelowhppc(monsters, range, hppc)
+    local creatures = getcreatures()
+    local monstersAround = 0
+
+    for _, m in ipairs(monsters) do
+        for _, c in ipairs(creatures) do
+            if math.floor(c.dist) <= range and c.type == CREATURE_TYPE_MONSTER and c.name == m:lower() and c.hppc <= hppc then
+                monstersAround = monstersAround + 1
+            end
+        end
+    end
+        return monstersAround
+end
+
 --- return number of selected or all monsters with x hppc and min max range
 --- @author  dulec
 --- @param monsters?, table
