@@ -1470,7 +1470,7 @@ function paround(range)
 end
 
 --- return number of all or selected monsters in range
---- @author  Loro
+--- @author  Loro & Dworak
 --- @param   range number
 --- @return  number
 function maround(range, ...)
@@ -1494,6 +1494,39 @@ function maround(range, ...)
     else
         for _, c in ipairs(creatures) do
             if math.floor(c.dist) <= range and c.type == CREATURE_TYPE_MONSTER then
+                monstersAround = monstersAround + 1
+            end
+        end
+    end
+    return monstersAround
+end
+
+--- return number of all or selected monsters in rangeMin and rangeMax
+--- @author  Dworak
+--- @param   rangeMin and rangeMax
+--- @return  number
+function maroundrange(rangeMin, rangeMax, ...)
+    rangeMin = rangeMin or 1
+    rangeMax = rangeMax or 7
+    local creatures = getcreatures()
+    if type(select(1, ...)) == "table" then
+        monsters = { table.unpack(...) }
+    else
+        monsters = { ... }
+    end
+    local monstersAround = 0
+    if next(monsters) ~= nil then
+        for i, name in ipairs(monsters) do
+            monsters[i] = name:lower()
+        end
+        for _, c in ipairs(creatures) do
+            if math.floor(c.dist) >= rangeMin and math.floor(c.dist) <= rangeMax and c.type == CREATURE_TYPE_MONSTER and table.contains(monsters, c.name:lower()) then
+                monstersAround = monstersAround + 1
+            end
+        end
+    else
+        for _, c in ipairs(creatures) do
+            if math.floor(c.dist) >= rangeMin and math.floor(c.dist) <= rangeMax and c.type == CREATURE_TYPE_MONSTER then
                 monstersAround = monstersAround + 1
             end
         end
