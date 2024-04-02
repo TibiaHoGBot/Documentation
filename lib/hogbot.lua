@@ -14,6 +14,9 @@
     You should have received a copy of the GNU General Public License
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 --]]
+
+---@module "core.meta"
+
 --[[
         Constants
 --]]
@@ -659,31 +662,6 @@ local cityTemples = {
     {33447, 31323, 9},  -- Gray Island
     {33921, 31477, 5}   -- Issavi
 }
-
---[[
-        Type definitions
---]]
-
---- @class Position
---- @field x number Position x
---- @field y number Position y
---- @field z number Position z
-
---- @class Item
---- @field id number ID of the item
---- @field count number Count of the item
-
---- @class Tile
---- @field items Item[]
---- @field position Position
-
---- @class Container
---- @field id number Index of the container
---- @field item Item Item representation of the container
---- @field items Item[] Array of items inside the container
---- @field name string Name of the container
---- @field subcontainer number 1 if container is a sub container, 0 otherwise
---- @field numslots number Max slots of the container
 
 --[[
         User functions
