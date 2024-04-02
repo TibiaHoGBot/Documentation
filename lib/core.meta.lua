@@ -10,6 +10,7 @@ Position = {}
 ---@param y integer
 ---@param z integer
 ---@return Position
+---@nodiscard
 function Position:new(x, y, z) end
 
 ---@class Creature
@@ -53,86 +54,109 @@ function wait(min, max) end
 function waitping() end
 
 ---@return integer
+---@nodiscard
 function id() end
 
 ---@return integer
+---@nodiscard
 function level() end
 
 ---@return number
+---@nodiscard
 function cap() end
 
 ---@return integer
+---@nodiscard
 function hp() end
 
 ---@return integer
+---@nodiscard
 function mp() end
 
 ---@return integer
+---@nodiscard
 function maxhp() end
 
 ---@return integer
+---@nodiscard
 function maxmp() end
 
 ---@return integer
+---@nodiscard
 function posx() end
 
 ---@return integer
+---@nodiscard
 function posy() end
 
+---@nodiscard
 ---@return integer
 function posz() end
 
 ---@return number
+---@nodiscard
 function standtime() end
 
 ---@return Creature[]
+---@nodiscard
 function getcreatures() end
 
 ---@return Container[]
+---@nodiscard
 function getcontainers() end
 
 ---@return Tile[]
+---@nodiscard
 function gettiles() end
 
 ---@return Spell[]
+---@nodiscard
 function getspells() end
 
 ---TODO: document functionality when `spellId` is passed
 ---@param spellId integer?
 ---@return integer[]
+---@nodiscard
 function knownspells(spellId) end
 
 ---@param positionOrX Position|integer
 ---@param y? integer
 ---@param z? integer
 ---@return Tile
+---@nodiscard
 function gettile(positionOrX, y, z) end
 
 ---@param slotId integer
 ---@return Item
+---@nodiscard
 function getinventory(slotId) end
 
 ---@param itemId integer
 ---@param flag integer
 ---@return boolean
+---@nodiscard
 function itemproperty(itemId, flag) end
 
 ---@param flag integer
 ---@return boolean
+---@nodiscard
 function playerflag(flag) end
 
 ---@param cooldownId integer
 ---@return boolean
+---@nodiscard
 function cooldown(cooldownId) end
 
 ---@param cooldownGroupId integer
 ---@return boolean
+---@nodiscard
 function cooldowngroup(cooldownGroupId) end
 
 ---@param x integer
 ---@param y integer
 ---@param z integer
 ---@return boolean
+---@nodiscard
 function tilereachable(x, y, z) end
 
 ---@param containerId integer
