@@ -3037,6 +3037,22 @@ function equipitem(itemID, inventorySlot)
     end
 end
 
+--- unequip inventory item
+--- @author  dworak
+--- @param   inventorySlot
+--- @return  nil
+function unequipitem(inventorySlot)
+    local currentId = getinventory(inventorySlot).id
+    local invetoryPos = getinventoryposition(inventorySlot)
+    if currentId ~= 0 then
+        while currentId ~= 0 do
+            equipobject(getinventory(inventorySlot).id, 0)
+            wait(400,900)
+            currentId = getinventory(inventorySlot).id
+        end
+    end
+end
+
 
 --- use lever on x y z position and ID or if no ID then default lever id
 --- @author  dworak
