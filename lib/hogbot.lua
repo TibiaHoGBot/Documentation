@@ -823,7 +823,7 @@ end
 --- amount of items in cointainers by id
 --- @author  dulec
 --- @param   itemid number
---- @param   sourceLocation string
+--- @param   sourceLocation? string
 --- @return  number
 function countitems(itemid, sourceLocation)
     if type(itemid) ~= "number" then
@@ -926,7 +926,7 @@ function buyitemsupto(itemid, amount, ignorecap, withbackpacks)
     if type(itemid) ~= "number" or type(amount) ~= "number" then
         error("All arguments must be numbers")
     end
-    
+
     if countitems(itemid) >= amount then
        return
     end
@@ -1073,16 +1073,16 @@ end
 
 --- check if character know spell by name
 --- @author  dulec & dworak
---- @param   spellid number
+--- @param   spellName string
 --- @return  boolean
 function knowspell(spellName)
     if type(spellName) ~= "string" then
         error("spellName must be a string")
     end
-    
+
     local cooldownId, minMana, spellGroup = getspelldetails(spellName)
     local knownspells = knownspells()
-    
+
     for _, spell in ipairs(knownspells) do
         if spell == cooldownId then
             return true
@@ -1093,8 +1093,8 @@ end
 
 --- cast spell levitate until floor index changes
 --- @author  dulec
---- @param   direction The direction as 'n' or 'north', 'e' or 'east', 's' or 'south', 'w' or 'west'
---- @param   updown The floor as 'up' or 'down'
+--- @param   direction string The direction as 'n' or 'north', 'e' or 'east', 's' or 'south', 'w' or 'west'
+--- @param   updown string The floor as 'up' or 'down'
 --- @return  nil
 function levitate(direction, updown)
     local spell = "exani hur up"
@@ -1360,7 +1360,7 @@ end
 
 --- returns hex level if your character is hexed
 --- @author  Dworak
---- @return  number
+--- @return  0|1|2|3
 function ishexed()
     if playerflag(PLAYER_FLAGS_GREATER_HEX) then
         return 3
@@ -1389,7 +1389,7 @@ end
 
 --- returns taint level if your character has taints
 --- @author Dworak
---- @return number
+--- @return 0|1|2|3|4|5
 function isgoshnar()
     if playerflag(PLAYER_FLAGS_GOSHNAR_5) then
         return 5
@@ -1449,14 +1449,14 @@ end
 
 --- return number of all or selected monsters in range
 --- @author  Loro
---- @param   range number
+--- @param   range? number
 --- @return  number
 function maround(range, ...)
     local range = range or 8
     local creatures = getcreatures()
     local monsters = { table.unpack(...) }
     local monstersAround = 0
-    
+
     if next(monsters) ~= nil then
         for i, name in ipairs(monsters) do
             monsters[i] = name:lower()
@@ -1478,10 +1478,10 @@ end
 
 --- return number of selected or all monsters with x hppc and min max range
 --- @author  dulec
---- @param monsters?, table
---- @param minrange, number
---- @param maxrange, number
---- @param hppc, number
+--- @param monsters? table
+--- @param minrange number
+--- @param maxrange number
+--- @param hppc number
 --- @return  number
 function minrangelowhppc(monsters, minrange, maxrange, hppc)
     local creatures = getcreatures()
@@ -1804,9 +1804,7 @@ end
 --- Open or closes a door in position given. Returns true doors have been used to it's desired state.
 --- @author mistgun
 --- @param	position Position The door position
---- @param	action string close or open
---- |"'close'"
---- |"'open'"
+--- @param	action 'close'|'open' close or open
 --- @return  boolean
 function usedoor(position, action)
     if not action or (action ~= "open" and action ~= "close") then
@@ -2187,7 +2185,7 @@ end
 
 --- talk to npc
 --- @author  spec8320
---- @param	 ... table Words list
+--- @param	 ... string Words list
 function npctalk(...)
     local words = { ... }
     for _, word in ipairs(words) do
@@ -2198,7 +2196,7 @@ end
 
 --- reopens backpacks specified
 --- @author  mistgun
---- @param	 ... table The backpacks list as {id, locationName, asNew}.
+--- @param	 ... {[1]: integer, [2]: string, [3]?: boolean} The backpacks list
 --- @return  boolean
 function reopenbps(...)
     local bps = { ... }
@@ -2561,7 +2559,7 @@ end
 
 --- split token string with delimiter
 --- @author spec8320
---- @return string
+--- @return string|string[]
 function string:token(n, delimiter)
     delimiter = delimiter or " +"
     local result = {}
@@ -2581,7 +2579,7 @@ end
 
 --- look for training statue, if found reaches it and use
 --- @author  dulec
---- @param   skill string
+--- @param   skill 'sword'|'axe'|'club'|'distance'|'magic'
 --- @return  nil
 function trainskill(skill)
     if type(skill) ~= "string" and skill ~= "sword" and skill ~= "axe" and skill ~= "club" and skill ~= "distance" and skill ~= "magic" then
@@ -2640,7 +2638,7 @@ end
 
 --- returns Position of specified inventory
 --- @author  dulec
---- @param   slot Position
+--- @param   slot integer
 --- @return  Position
 function getinventoryposition(slot)
     if type(slot) ~= "number" or slot < 1 or slot > 10 then
@@ -2694,7 +2692,10 @@ end
 
 --- @desc Fishes on ice spots.
 --- @author  dworak
---- @param	x,y,z of hole and optional pickid
+--- @param	x integer X coordinate of the hole
+--- @param	y integer Y coordinate of the hole
+--- @param	z integer Z coordinate of the hole
+--- @param	pickid? integer
 --- @returns boolean
 function fishinice(x, y, z, pickid)
     if countitems(3492) > 0 then
@@ -2732,19 +2733,22 @@ end
 
 --- @desc Buying items up to x cap left
 --- @author  dworak
---- @param	itemid, itemoz, mincap
+--- @param	itemid integer
+--- @param  itemoz number
+--- @param  mincap number
 --- @returns nil
 function buyitemsuptocap(itemid, itemoz, mincap)
     local amount = math.floor((cap()-mincap)/itemoz)
     if amount > 0 then
-        buyitemsupto(itemid, itemsToBuy)
+        buyitemsupto(itemid, amount)
         wait(200,400)
     end
 end
 
 --- @desc Uses sio to heal the players found on the list.
 --- @author  dworak
---- @param	hppc, name¹, name², name*, ...
+--- @param	hppc number
+--- @param  ... string List of player names to heal
 --- @returns nil
 function sio(hppc, ...)
     if not cancast('heal friend') then
@@ -2782,7 +2786,6 @@ end
 
 --- selling all available flasks on character
 --- @author  dworak
---- @param   ---
 --- @return  nil
 function sellflasks()
     for i=283,285 do
@@ -2797,7 +2800,7 @@ end
 
 --- sell items with given ID's
 --- @author  dworak
---- @param   item ids
+--- @param   itemsForSale integer[]
 --- @return  nil
 function sellitems(itemsForSale)
     for _, item in ipairs(itemsForSale) do
@@ -2812,8 +2815,8 @@ end
 
 --- returns true or false if specified bps are opened
 --- @author  dworak
---- @param   backpack names or ids
---- @return  bool
+--- @param   ... string|integer Backpack names or ids
+--- @return  boolean
 function windowsopened(...)
     local containers = getcontainers()
     local bpNames = {...}
@@ -2834,13 +2837,12 @@ function windowsopened(...)
             end
         end
     end
-    
+
     return count == #bpNames
 end
 
 --- returns amount of containers opened
 --- @author  dworak
---- @param   ---
 --- @return  number
 function windowcount()
     local containers = getcontainers()
@@ -2850,7 +2852,7 @@ end
 --- return details about spell
 --- @author  dworak
 --- @param  spellName string
---- @return  spell CooldownID, ManaRequired, CooldownGroup
+--- @return integer? cooldownId, integer? manaRequired, integer? cooldownGroupId
 function getspelldetails(spellName)
     if type(spellName) ~= "string" then
         error("spellName must be a string")
@@ -2871,7 +2873,7 @@ end
 --- check if can cast the spell returns true if yes
 --- @author  dworak
 --- @param   spellName string
---- @return  bool
+--- @return  boolean
 function cancast(spellName)
     if type(spellName) ~= "string" then
         error("spellName must be a string")
@@ -2883,7 +2885,7 @@ end
 
 --- casts spell
 --- @author  dworak
---- @param   spellName
+--- @param   spellName string
 --- @return  nil
 function cast(spellName)
     if type(spellName) ~= "string" then
@@ -2906,7 +2908,10 @@ end
 
 --- sell loots and open next loot Backpacks to sell everything
 --- @author  dulec
---- @param   mainBpName, lootBpId, lootBpName, items
+--- @param   mainBpName string
+--- @param   lootBpId   integer
+--- @param   lootBpName string
+--- @param   items      integer[]
 --- @return  nil
 function sellloot(mainBpName, lootBpId, lootBpName, items)
     if #items == 0 then return end
@@ -2941,7 +2946,8 @@ end
 
 --- equip inventory item and unequip old if there is anything
 --- @author  dworak
---- @param   itemID, inventorySlot
+--- @param   itemID integer
+--- @param   inventorySlot integer
 --- @return  nil
 function equipitem(itemID, inventorySlot)
     local currentId = getinventory(inventorySlot).id
@@ -2981,7 +2987,7 @@ end
 --- @return  nil
 function eatfood()
     local fooditems = {3250, 3577, 3578, 3579, 3581, 3582, 3583, 3584, 3585, 3586, 3587, 3588, 3589, 3590, 3591, 3592, 3593, 3594, 3595, 3596, 3597, 3598, 3599, 3600, 3601, 3602, 3603, 3604, 3605, 3606, 3607, 3723, 3724, 3725, 3727, 3729, 3730, 5096, 5466, 5678, 6125, 6276, 6277, 6278, 6279, 6392, 6393, 6500, 6541, 6542, 6543, 6544, 6545, 6569, 6574, 7372, 7373, 7374, 7375, 7376, 7377, 8010, 8011, 8012, 8013, 8014, 8015, 8016, 8017, 8018, 8019, 8020, 8177, 8197, 9079, 9080, 9081, 9082, 9083, 9084, 9085, 9086, 9087, 9088, 10219, 10329, 11459, 11460, 11461, 11462, 11584, 11586, 11587, 11588, 11682, 11683, 11685, 12310, 13992, 14084, 14085, 14681, 16103, 17457, 17820, 17821, 20310}
-    
+
     for _, i in ipairs(fooditems) do
         if countitems(i) > 0 and not ispzone() then
             foodposition = getitempositionfromcontainers(i)
@@ -2996,7 +3002,7 @@ end
 function eatdrop(...)
     local keepItems = {...} -- Shovel and Rope ID / Items to Keep 1 piece
     local foodItems = {3250, 3577, 3578, 3579, 3581, 3582, 3583, 3584, 3585, 3586, 3587, 3588, 3589, 3590, 3591, 3592, 3593, 3594, 3595, 3596, 3597, 3598, 3599, 3600, 3601, 3602, 3603, 3604, 3605, 3606, 3607, 3723, 3724, 3727, 3729, 3730, 5096, 5466, 5678, 6125, 6276, 6277, 6278, 6279, 6392, 6393, 6500, 6541, 6542, 6543, 6544, 6545, 6569, 6574, 7372, 7373, 7374, 7375, 7376, 7377, 8010, 8011, 8012, 8013, 8014, 8015, 8016, 8017, 8018, 8019, 8020, 8177, 8197, 9079, 9080, 9081, 9082, 9083, 9084, 9085, 9086, 9087, 9088, 10219, 10329, 11459, 11460, 11461, 11462, 11584, 11586, 11587, 11588, 11682, 11683, 11685, 12310, 13992, 14084, 14085, 14681, 16103, 17457, 17820, 17821, 20310} -- Food IDs to Eat and drop
-    
+
     for _, id in ipairs(keepItems) do
         local count = countitems(id)
         if count > 1 then
@@ -3191,7 +3197,7 @@ end
 --- finds position of a first item that has count of 1 or more
 --- @author  sh_u
 --- @param   itemId number id of an item to split
---- @param   destCont string name of a container, e.g "brocade backpack".
+--- @param   destCont Container name of a container, e.g "brocade backpack".
 --- @return  Position|nil
 function findstackeditempos(itemId, destCont)
   if type(itemId) ~= "number" then
@@ -3213,7 +3219,7 @@ end
 
 --- finds position of a first empty slot
 --- @author  sh_u
---- @param   destCont string name of a container, e.g "brocade backpack".
+--- @param   destCont Container
 --- @return  Position|nil
 function findemptyslotpos(destCont)
   if not destCont or not destCont.items then
@@ -3256,7 +3262,7 @@ function ringinuse(iid)
         [3004] = 3004,
         [16114] = 16264
     }
-    
+
     local ringid = rings[iid]
     return ringid and ringid or 0
 end
@@ -3290,7 +3296,9 @@ end
 
 --- anti furniture trap
 --- @author  dworak
---- @param   standtime, weapon to use(need be in backpack), detection range - all params are optionally
+--- @param   stand? number
+--- @param   weapon? integer Weapon to use(need be in backpack)
+--- @param   range? integer detection range
 --- @return  nil
 function antifurnituretrap(stand, weapon, range)
     local range = range or 1
@@ -3328,7 +3336,8 @@ end
 
 --- choose random city from list
 --- @author  dworak
---- @param   city list
+--- @param   randomCity string[]
+--- @param   huntCity string
 --- @return  string
 function randomizer(randomCity, huntCity)
     huntCity = huntCity or nil
@@ -3339,7 +3348,7 @@ function randomizer(randomCity, huntCity)
             end
         end
     end
-    
+
     math.randomseed(os.time())
     local randomIndex = math.random(1, #randomCity)
     return randomCity[randomIndex]
@@ -3347,7 +3356,7 @@ end
 
 --- use given item ID from backpack
 --- @author  dworak
---- @param   item id to use
+--- @param   itemid integer
 --- @return  nil
 function useiteminbp(itemid)
     local itemPos = getitempositionfromcontainers(itemid)
