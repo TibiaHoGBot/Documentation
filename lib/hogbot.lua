@@ -1476,14 +1476,13 @@ end
 --- @return  number
 function maround(range, ...)
     local range = range or 8
+    local monsters = { ... }
     local creatures = getcreatures()
-    if type(select(1, ...)) == "table" then
-        monsters = { table.unpack(...) }
-    else
-        monsters = { ... }
+    if type(monsters[1]) == "table" then
+        monsters = table.unpack(monsters)
     end
     local monstersAround = 0
-    if next(monsters) ~= nil then
+    if #monsters > 0 then
         for i, name in ipairs(monsters) do
             monsters[i] = name:lower()
         end
@@ -1507,16 +1506,15 @@ end
 --- @param   rangeMin and rangeMax
 --- @return  number
 function maroundrange(rangeMin, rangeMax, ...)
-    rangeMin = rangeMin or 1
-    rangeMax = rangeMax or 7
+    local rangeMin = rangeMin or 1
+    local rangeMax = rangeMax or 7
+    local monsters = { ... }
     local creatures = getcreatures()
-    if type(select(1, ...)) == "table" then
-        monsters = { table.unpack(...) }
-    else
-        monsters = { ... }
+    if type(monsters[1]) == "table" then
+        monsters = table.unpack(monsters)
     end
     local monstersAround = 0
-    if next(monsters) ~= nil then
+    if #monsters > 0 then
         for i, name in ipairs(monsters) do
             monsters[i] = name:lower()
         end
