@@ -3025,14 +3025,10 @@ function equipitem(itemID, inventorySlot)
     local currentId = getinventory(inventorySlot).id
     local invetoryPos = getinventoryposition(inventorySlot)
     if currentId ~= itemID then
-        while currentId ~= itemID and countitems(itemID) > 0 do
-            equipobject(getinventory(inventorySlot).id, 0)
-            wait(400,900)
-            local itemPos = getitempositionfromcontainers(itemID)
-            moveobject(itemPos, itemID, itemPos.z, invetoryPos, 100)
-            wait(200,400)
-            currentId = getinventory(inventorySlot).id
-        end
+        equipobject(getinventory(inventorySlot).id, 0)
+        wait(400,600)
+        local itemPos = getitempositionfromcontainers(itemID)
+        moveobject(itemPos, itemID, itemPos.z, invetoryPos, 100)
     end
 end
 
@@ -3044,11 +3040,8 @@ function unequipitem(inventorySlot)
     local currentId = getinventory(inventorySlot).id
     local invetoryPos = getinventoryposition(inventorySlot)
     if currentId ~= 0 then
-        while currentId ~= 0 do
-            equipobject(getinventory(inventorySlot).id, 0)
-            wait(400,900)
-            currentId = getinventory(inventorySlot).id
-        end
+        equipobject(getinventory(inventorySlot).id, 0)
+        wait(400,600)
     end
 end
 
