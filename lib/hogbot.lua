@@ -1125,13 +1125,13 @@ function levitate(direction, updown)
         spell = "exani hur down"
     end
 
-    turn(direction)
-    wait(200)
     if mp() > 50 and level() >= 12 and knownspells(81) then
         local currentz = posz()
         while currentz == posz() do
+            turn(direction)
+            wait(500,900)
             talk(MESSAGE_TYPE_SAY, spell)
-            wait(1000)
+            wait(500,1000)
         end
     end
 end
