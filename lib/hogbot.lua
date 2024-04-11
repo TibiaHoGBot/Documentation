@@ -407,7 +407,8 @@ local CLOSED_DOOR_IDS = {
     20453,
     20455,
     20457,
-    20459
+    20459,
+    30034
 }
 local OPENED_DOOR_IDS = {
     1630,
@@ -590,7 +591,8 @@ local OPENED_DOOR_IDS = {
     20454,
     20456,
     20458,
-    20460
+    20460,
+    30036
 }
 
 -- Items bought by npcs -- ## CREDITS TO WINDBOT LIBRARY ##
