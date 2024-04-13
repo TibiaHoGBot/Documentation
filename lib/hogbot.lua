@@ -1918,7 +1918,7 @@ end
 --- @param	 position Position
 --- @return  boolean
 function isitemonposition(itemid, position)
-    local tile = gettile(position.x, position.y, position.z)
+    local tile = gettile(position)
     return isitemontile(itemid, tile)
 end
 
