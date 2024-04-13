@@ -3027,8 +3027,6 @@ function equipitem(itemID, inventorySlot)
     local currentId = getinventory(inventorySlot).id
     local invetoryPos = getinventoryposition(inventorySlot)
     if currentId ~= itemID then
-        equipobject(getinventory(inventorySlot).id, 0)
-        wait(400,600)
         local itemPos = getitempositionfromcontainers(itemID)
         moveobject(itemPos, itemID, itemPos.z, invetoryPos, 100)
         wait(400,600)
