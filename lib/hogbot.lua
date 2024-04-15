@@ -1465,7 +1465,7 @@ function paround(range)
     local playersAround = 0
 
     for _, c in ipairs(creatures) do
-        if math.floor(c.dist) <= range and c.type == CREATURE_TYPE_PLAYER then
+        if math.floor(c.dist) <= range and c.type == CREATURE_TYPE_PLAYER and c.id ~= id() then
             playersAround = playersAround + 1
         end
     end
