@@ -2971,7 +2971,6 @@ function cast(spellName)
         error("spellName must be a string")
     end
     talk(MESSAGE_TYPE_SAY, spellName)
-    waitping()
 end
 
 --- drop flasks
