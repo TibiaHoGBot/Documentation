@@ -2883,9 +2883,11 @@ end
 function sellitems(itemsForSale)
     for _, item in ipairs(itemsForSale) do
         local count = countitems(item)
-        while count > 0 do
+        local oldcount = 0
+        while count > 0 and count ~= oldcount do
             sellobject(item,count)
             waitping()
+            oldcount = count
             count = countitems(item)
         end
     end
