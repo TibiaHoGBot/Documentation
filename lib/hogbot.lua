@@ -1129,13 +1129,10 @@ function levitate(direction, updown)
     end
 
     if mp() > 50 and level() >= 12 and knownspells(81) then
-        local currentz = posz()
-        while currentz == posz() do
-            turn(direction)
-            wait(500,900)
-            talk(MESSAGE_TYPE_SAY, spell)
-            wait(500,1000)
-        end
+        turn(direction)
+        wait(500,900)
+        talk(MESSAGE_TYPE_SAY, spell)
+        wait(400,800)
     end
 end
 
