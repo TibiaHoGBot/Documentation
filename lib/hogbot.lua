@@ -2048,7 +2048,17 @@ function openobject(itemID, locationFrom, asNew, parentIndex, stackIndex)
     end
 
     if asNew then
-        parentPos = #containers
+        for _, cont in ipairs(containers) do
+            if cont.id - parentPos > 1 then
+                break
+            end
+
+            if cont.id > parentPos then
+                parentPos = cont.id
+            end 
+        end
+
+        parentPos = parentPos + 1
     end
 
     local stackPos, index = -1, -1
