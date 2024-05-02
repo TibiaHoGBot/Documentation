@@ -2000,6 +2000,23 @@ function getdepotboxidfromindex(index)
     return boxesIds[index]
 end
 
+--- finds next container id
+--- @author  mistgun
+--- @param   containers Container[]|nil
+--- @return  number
+function getnextcontainerid(containers)
+    local containers = containers or getcontainers()
+    local containerLookup, id = {}, 0
+    for _, cont in ipairs(containers) do
+        containerLookup[cont.id] = true
+    end
+    while containerLookup[id] do
+        id = id + 1
+    end
+
+    return id
+end
+
 --- opens specific object
 --- @author  mistgun
 --- @param   itemID number itemID to open
@@ -2048,17 +2065,7 @@ function openobject(itemID, locationFrom, asNew, parentIndex, stackIndex)
     end
 
     if asNew then
-        for _, cont in ipairs(containers) do
-            if cont.id - parentPos > 1 then
-                break
-            end
-
-            if cont.id > parentPos then
-                parentPos = cont.id
-            end 
-        end
-
-        parentPos = parentPos + 1
+        parentPos = getnextcontainerid(containers)
     end
 
     local stackPos, index = -1, -1
