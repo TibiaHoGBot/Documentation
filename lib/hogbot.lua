@@ -2779,13 +2779,13 @@ function fishinice(x, y, z, pickid)
         if pickid == nil then
             pickid = 3456
         end
-        local ignoreids = {2886, 2887, 7237}
+        local ignoreids = {2886, 2887, 2888, 2889, 2890, 2891, 7237}
         local fishpos = Position:new(x, y, z)
         local destination = findreachabletilearoundposition(fishpos)
         if destination ~= nil then
             reachlocation(destination.x, destination.y, destination.z)
         end
-        while topitem(fishpos).id ~= 7200 and topitem(fishpos).id ~= 7236 and not table.contains(ignoreids, topitem(fishpos).id) do
+        if topitem(fishpos).id ~= 7200 and topitem(fishpos).id ~= 7236 and not table.contains(ignoreids, topitem(fishpos).id) then
             moveallitemstoyourposition(fishpos)
         end
         local tile = gettile(fishpos)
