@@ -181,6 +181,7 @@ local CLOSED_DOOR_IDS = {
     1694,
     1696,
     1698,
+    2177,
     4912,
     4913,
     5006,
@@ -407,7 +408,8 @@ local CLOSED_DOOR_IDS = {
     20453,
     20455,
     20457,
-    20459
+    20459,
+    30034
 }
 local OPENED_DOOR_IDS = {
     1630,
@@ -590,14 +592,15 @@ local OPENED_DOOR_IDS = {
     20454,
     20456,
     20458,
-    20460
+    20460,
+    30036
 }
 
--- Items bought by npcs
+-- Items bought by npcs -- ## CREDITS TO WINDBOT LIBRARY ##
 ITEMS_ASNARUS              = {283, 284, 285, 2874, 3277, 3349, 3350, 20183, 20184, 20198, 20199, 20200, 20201, 20202, 20203, 20204, 20205, 20206, 20207}
 ITEMS_BLUE_DJINN           = {660, 674, 679, 693, 779, 793, 794, 810, 3046, 3049, 3050, 3056, 3060, 3061, 3062, 3071, 3072, 3073, 3074, 3075, 3079, 3081, 3082, 3083, 3091, 3092, 3093, 3271, 3279, 3280, 3284, 3301, 3302, 3313, 3320, 3380, 3381, 3382, 3385, 3391, 3392, 3415, 3416, 3418, 3419, 3439, 3567, 7391, 7410, 7412, 7436, 7451, 7454, 8092, 8093, 8094, 16096, 16115}
 ITEMS_BRENGUS              = {3264, 3265, 3266, 3267, 3268, 3269, 3270, 3271, 3272, 3273, 3274, 3275, 3276, 3277, 3279, 3280, 3282, 3283, 3285, 3286, 3293, 3294, 3298, 3300, 3304, 3305, 3316, 3336, 3337, 3338, 3345, 3346, 3347, 3348, 3349, 3350, 3351, 3352, 3353, 3354, 3355, 3357, 3358, 3359, 3361, 3362, 3367, 3372, 3374, 3375, 3376, 3377, 3378, 3379, 3403, 3404, 3405, 3406, 3407, 3408, 3409, 3410, 3411, 3413, 3425, 3426, 3430, 3431, 3443, 3444, 3445, 3462, 3552, 3556, 3557, 3558, 3559, 3560, 3561, 3562, 11471, 11511, 17824}
-ITEMS_ESRIK                = {3264, 3265, 3266, 3267, 3268, 3269, 3270, 3272, 3273, 3274, 3275, 3276, 3282, 3283, 3285, 3286, 3293, 3294, 3298, 3300, 3304, 3305, 3316, 3336, 3337, 3338, 3351, 3352, 3353, 3354, 3355, 3357, 3358, 3359, 3361, 3362, 3367, 3372, 3374, 3375, 3376, 3377, 3378, 3379, 3409, 3410, 3411, 3412, 3413, 3425, 3426, 3430, 3431, 3462, 3552, 3557, 3558, 3559, 3561, 3562, 4033, 10323, 10384, 10385, 10386, 10387, 10388, 10389, 10390, 10391, 10392, 10404, 10405, 10406, 10408, 10410, 10412, 10414, 10416, 10418, 11651, 11657, 11659, 11660, 11661, 17824}
+ITEMS_ESRIK                = {3264, 3265, 3266, 3267, 3268, 3269, 3270, 3272, 3273, 3274, 3275, 3276, 3282, 3283, 3285, 3286, 3293, 3294, 3298, 3300, 3304, 3305, 3316, 3336, 3337, 3338, 3351, 3352, 3353, 3354, 3355, 3357, 3358, 3359, 3361, 3362, 3367, 3372, 3374, 3375, 3376, 3377, 3378, 3379, 3409, 3410, 3411, 3412, 3413, 3425, 3426, 3430, 3431, 3462, 3552, 3557, 3558, 3559, 3561, 3562, 4033, 10323, 10384, 10385, 10386, 10387, 10388, 10389, 10390, 10391, 10392, 10404, 10405, 10406, 10408, 10410, 10412, 10414, 10416, 10418, 11651, 11657, 11659, 11660, 11661, 17824, 10289}
 ITEMS_FIONA                = {5804, 5808, 5879, 5881, 5882, 5884, 5885, 5890, 5891, 5893, 5894, 5895, 5898, 5899, 5902, 5904, 5905, 5906, 5919, 5920, 5921, 5922, 5925, 5930, 5943, 5954, 7439, 7440, 7443, 9053, 9054, 9055, 9636, 9642, 9644, 9647, 9649, 9660, 9661, 9665, 9666, 10275, 10276, 10277, 10278, 10280, 10304, 10312, 10397, 10444, 11454, 11457, 11463, 11464, 11465, 11474, 11512, 11658, 11702, 11703, 14008, 14009, 14013, 16131, 16139, 16140, 17809, 17817, 17826, 17827, 17831, 17847, 17848, 17849, 17850, 17851, 17853, 17854, 17855, 17856, 17857, 18928, 22728, 22729, 22730}
 ITEMS_GNOMISSION           = {645, 902, 2848, 2852, 3013, 3014, 3068, 3249, 3295, 3306, 3323, 3341, 3387, 3398, 3424, 5080, 5791, 5803, 6103, 6527, 6561, 7183, 7416, 7417, 7453, 8021, 8025, 8029, 8039, 8041, 8055, 9394, 9606, 9613, 9616, 9617, 9618, 9619, 11679, 11693}
 ITEMS_GREEN_DJINN          = {666, 685, 785, 802, 3045, 3048, 3051, 3052, 3053, 3054, 3065, 3066, 3067, 3069, 3070, 3077, 3078, 3084, 3085, 3097, 3098, 3281, 3297, 3299, 3307, 3318, 3322, 3324, 3369, 3370, 3371, 3373, 3383, 3384, 3428, 3429, 3432, 3434, 3574, 7407, 7411, 7413, 7419, 7421, 7428, 8082, 8083, 8084, 16117, 16118}
@@ -615,10 +618,11 @@ ITEMS_RAFZAN               = {17846, 17813, 17812, 17810, 17859}
 ITEMS_ROCK                 = {14247, 14001, 14088, 14087, 13991, 14250, 13987, 13996, 13998, 14043, 14246, 14089, 13990, 14040, 14042, 14083, 14079, 14011, 14044, 14010, 14041, 14017, 14012, 14013, 14225, 12730, 14009, 14077, 14008, 14082, 14078, 14076, 14080, 14081}
 ITEMS_LAILENE              = {9103, 8064, 8043, 10451, 10438, 8042, 10439}
 ITEMS_TOTHDRAL             = {9645, 10320, 9646, 11652, 9638, 12737, 9639, 11455, 10303, 9635, 11466, 3058, 10316, 9652}
-ITEMS_FLINT                = {21173, 21166, 21175, 21174, 21169, 21171, 21167, 21172, 21178, 21164, 21179, 21180, 21183, 21170, 21176, 21177, 21168}
+ITEMS_FLINT                = {21173, 21166, 21175, 21174, 21169, 21171, 21167, 21172, 21178, 21164, 21179, 21180, 21183, 21170, 21176, 21177, 21168, 21165}
 ITEMS_ODEMARA              = {3027, 3004, 9057, 3029, 3030, 3032, 3028, 3033, 22194, 22193, 5799, 9058, 282, 281, 16120, 16126, 16122, 16121, 16127, 16125, 16123, 16124, 16119, 3026}
 ITEMS_ALAISTAR             = {21194, 21800, 21747, 21801, 21195, 21196, 21200, 21202, 21198, 21193, 21103, 21182, 21199, 21201, 21204}
 
+-- ## CREDITS TO WINDBOT LIBRARY ##
 local cityAreas = {
    {"thais", 32369, 32241, 100},
    {"carlin", 32343, 31791, 60},
@@ -1124,14 +1128,11 @@ function levitate(direction, updown)
         spell = "exani hur down"
     end
 
-    turn(direction)
-    wait(200)
     if mp() > 50 and level() >= 12 and knownspells(81) then
-        local currentz = posz()
-        while currentz == posz() do
-            talk(MESSAGE_TYPE_SAY, spell)
-            wait(1000)
-        end
+        turn(direction)
+        wait(500,900)
+        talk(MESSAGE_TYPE_SAY, spell)
+        wait(400,800)
     end
 end
 
@@ -1461,7 +1462,7 @@ function paround(range)
     local playersAround = 0
 
     for _, c in ipairs(creatures) do
-        if math.floor(c.dist) <= range and c.type == CREATURE_TYPE_PLAYER then
+        if math.floor(c.dist) <= range and c.type == CREATURE_TYPE_PLAYER and c.id ~= id() then
             playersAround = playersAround + 1
         end
     end
@@ -1470,16 +1471,18 @@ function paround(range)
 end
 
 --- return number of all or selected monsters in range
---- @author  Loro
+--- @author  Loro & Dworak
 --- @param   range number
 --- @return  number
 function maround(range, ...)
     local range = range or 8
+    local monsters = { ... }
     local creatures = getcreatures()
-    local monsters = { table.unpack(...) }
+    if type(monsters[1]) == "table" then
+        monsters = table.unpack(monsters)
+    end
     local monstersAround = 0
-    
-    if next(monsters) ~= nil then
+    if #monsters > 0 then
         for i, name in ipairs(monsters) do
             monsters[i] = name:lower()
         end
@@ -1496,6 +1499,59 @@ function maround(range, ...)
         end
     end
     return monstersAround
+end
+
+--- return number of all or selected monsters in rangeMin and rangeMax
+--- @author  Dworak
+--- @param   rangeMin and rangeMax
+--- @return  number
+function maroundrange(rangeMin, rangeMax, ...)
+    local rangeMin = rangeMin or 1
+    local rangeMax = rangeMax or 7
+    local monsters = { ... }
+    local creatures = getcreatures()
+    if type(monsters[1]) == "table" then
+        monsters = table.unpack(monsters)
+    end
+    local monstersAround = 0
+    if #monsters > 0 then
+        for i, name in ipairs(monsters) do
+            monsters[i] = name:lower()
+        end
+        for _, c in ipairs(creatures) do
+            if math.floor(c.dist) >= rangeMin and math.floor(c.dist) <= rangeMax and c.type == CREATURE_TYPE_MONSTER and table.contains(monsters, c.name:lower()) then
+                monstersAround = monstersAround + 1
+            end
+        end
+    else
+        for _, c in ipairs(creatures) do
+            if math.floor(c.dist) >= rangeMin and math.floor(c.dist) <= rangeMax and c.type == CREATURE_TYPE_MONSTER then
+                monstersAround = monstersAround + 1
+            end
+        end
+    end
+    return monstersAround
+end
+
+
+--- return number of selected or all monsters with x hppc and range
+--- @author  dulec
+--- @param monsters?, table
+--- @param range, number
+--- @param hppc, number
+--- @return  number
+function maroundbelowhppc(monsters, range, hppc)
+    local creatures = getcreatures()
+    local monstersAround = 0
+
+    for _, m in ipairs(monsters) do
+        for _, c in ipairs(creatures) do
+            if math.floor(c.dist) <= range and c.type == CREATURE_TYPE_MONSTER and c.name == m:lower() and c.hppc <= hppc then
+                monstersAround = monstersAround + 1
+            end
+        end
+    end
+        return monstersAround
 end
 
 --- return number of selected or all monsters with x hppc and min max range
@@ -2723,13 +2779,13 @@ function fishinice(x, y, z, pickid)
         if pickid == nil then
             pickid = 3456
         end
-        local ignoreids = {2886, 2887, 7237}
+        local ignoreids = {2886, 2887, 2888, 2889, 2890, 2891, 7237}
         local fishpos = Position:new(x, y, z)
         local destination = findreachabletilearoundposition(fishpos)
         if destination ~= nil then
             reachlocation(destination.x, destination.y, destination.z)
         end
-        while topitem(fishpos).id ~= 7200 and topitem(fishpos).id ~= 7236 and not table.contains(ignoreids, topitem(fishpos).id) do
+        if topitem(fishpos).id ~= 7200 and topitem(fishpos).id ~= 7236 and not table.contains(ignoreids, topitem(fishpos).id) then
             moveallitemstoyourposition(fishpos)
         end
         local tile = gettile(fishpos)
@@ -2824,9 +2880,11 @@ end
 function sellitems(itemsForSale)
     for _, item in ipairs(itemsForSale) do
         local count = countitems(item)
-        while count > 0 do
+        local oldcount = 0
+        while count > 0 and count ~= oldcount do
             sellobject(item,count)
             waitping()
+            oldcount = count
             count = countitems(item)
         end
     end
@@ -2912,7 +2970,6 @@ function cast(spellName)
         error("spellName must be a string")
     end
     talk(MESSAGE_TYPE_SAY, spellName)
-    waitping()
 end
 
 --- drop flasks
@@ -2969,14 +3026,22 @@ function equipitem(itemID, inventorySlot)
     local currentId = getinventory(inventorySlot).id
     local invetoryPos = getinventoryposition(inventorySlot)
     if currentId ~= itemID then
-        while currentId ~= itemID and countitems(itemID) > 0 do
-            equipobject(getinventory(inventorySlot).id, 0)
-            wait(400,900)
-            local itemPos = getitempositionfromcontainers(itemID)
-            moveobject(itemPos, itemID, itemPos.z, invetoryPos, 100)
-            wait(200,400)
-            currentId = getinventory(inventorySlot).id
-        end
+        local itemPos = getitempositionfromcontainers(itemID)
+        moveobject(itemPos, itemID, itemPos.z, invetoryPos, 100)
+        wait(400,600)
+    end
+end
+
+--- unequip inventory item
+--- @author  dworak
+--- @param   inventorySlot
+--- @return  nil
+function unequipitem(inventorySlot)
+    local currentId = getinventory(inventorySlot).id
+    local invetoryPos = getinventoryposition(inventorySlot)
+    if currentId ~= 0 then
+        equipobject(getinventory(inventorySlot).id, 0)
+        wait(400,600)
     end
 end
 
@@ -3002,7 +3067,7 @@ end
 --- @author  dworak
 --- @return  nil
 function eatfood()
-    local fooditems = {3250, 3577, 3578, 3579, 3581, 3582, 3583, 3584, 3585, 3586, 3587, 3588, 3589, 3590, 3591, 3592, 3593, 3594, 3595, 3596, 3597, 3598, 3599, 3600, 3601, 3602, 3603, 3604, 3605, 3606, 3607, 3723, 3724, 3725, 3727, 3729, 3730, 5096, 5466, 5678, 6125, 6276, 6277, 6278, 6279, 6392, 6393, 6500, 6541, 6542, 6543, 6544, 6545, 6569, 6574, 7372, 7373, 7374, 7375, 7376, 7377, 8010, 8011, 8012, 8013, 8014, 8015, 8016, 8017, 8018, 8019, 8020, 8177, 8197, 9079, 9080, 9081, 9082, 9083, 9084, 9085, 9086, 9087, 9088, 10219, 10329, 11459, 11460, 11461, 11462, 11584, 11586, 11587, 11588, 11682, 11683, 11685, 12310, 13992, 14084, 14085, 14681, 16103, 17457, 17820, 17821, 20310}
+    local fooditems = {3250, 3577, 3578, 3579, 3581, 3582, 3583, 3584, 3585, 3586, 3587, 3588, 3589, 3590, 3591, 3592, 3593, 3594, 3595, 3596, 3597, 3598, 3599, 3600, 3601, 3602, 3603, 3604, 3605, 3606, 3607, 3723, 3724, 3725, 3727, 3729, 3730, 5096, 5466, 5678, 6125, 6276, 6277, 6278, 6279, 6392, 6393, 6500, 6541, 6542, 6543, 6544, 6545, 6569, 6574, 7372, 7373, 7374, 7375, 7376, 7377, 8010, 8011, 8012, 8013, 8014, 8015, 8016, 8017, 8018, 8019, 8020, 8177, 8197, 10219, 10329, 11459, 11460, 11461, 11462, 11682, 11683, 11685, 12310, 13992, 14084, 14085, 14681, 16103, 17457, 17820, 17821, 20310}
     
     for _, i in ipairs(fooditems) do
         if countitems(i) > 0 and not ispzone() then
@@ -3016,8 +3081,8 @@ end
 --- @author  dworak
 --- @return  nil
 function eatdrop(...)
-    local keepItems = {...} -- Shovel and Rope ID / Items to Keep 1 piece
-    local foodItems = {3250, 3577, 3578, 3579, 3581, 3582, 3583, 3584, 3585, 3586, 3587, 3588, 3589, 3590, 3591, 3592, 3593, 3594, 3595, 3596, 3597, 3598, 3599, 3600, 3601, 3602, 3603, 3604, 3605, 3606, 3607, 3723, 3724, 3727, 3729, 3730, 5096, 5466, 5678, 6125, 6276, 6277, 6278, 6279, 6392, 6393, 6500, 6541, 6542, 6543, 6544, 6545, 6569, 6574, 7372, 7373, 7374, 7375, 7376, 7377, 8010, 8011, 8012, 8013, 8014, 8015, 8016, 8017, 8018, 8019, 8020, 8177, 8197, 9079, 9080, 9081, 9082, 9083, 9084, 9085, 9086, 9087, 9088, 10219, 10329, 11459, 11460, 11461, 11462, 11584, 11586, 11587, 11588, 11682, 11683, 11685, 12310, 13992, 14084, 14085, 14681, 16103, 17457, 17820, 17821, 20310} -- Food IDs to Eat and drop
+    local keepItems = { table.unpack(...) } -- Shovel and Rope ID / Items to Keep 1 piece
+    local foodItems = {3250, 3577, 3578, 3579, 3581, 3582, 3583, 3584, 3585, 3586, 3587, 3588, 3589, 3590, 3591, 3592, 3593, 3594, 3595, 3596, 3597, 3598, 3599, 3600, 3601, 3602, 3603, 3604, 3605, 3606, 3607, 3723, 3724, 3727, 3729, 3730, 5096, 5466, 5678, 6125, 6276, 6277, 6278, 6279, 6392, 6393, 6500, 6541, 6542, 6543, 6544, 6545, 6569, 6574, 7372, 7373, 7374, 7375, 7376, 7377, 8010, 8011, 8012, 8013, 8014, 8015, 8016, 8017, 8018, 8019, 8020, 8177, 8197, 10219, 10329, 11459, 11460, 11461, 11462, 11584, 11586, 11587, 11588, 11682, 11683, 11685, 12310, 13992, 14084, 14085, 14681, 16103, 17457, 17820, 17821, 20310} -- Food IDs to Eat and drop
     
     for _, id in ipairs(keepItems) do
         local count = countitems(id)
