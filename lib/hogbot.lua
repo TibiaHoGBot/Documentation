@@ -2331,10 +2331,10 @@ function deposititems(fromBpName, stackBoxIndex, nonStackBoxIndex, ignoredItemID
 
         if nextLootBpItemIndex ~= -1 then
             openobject(lootBpContainer.item.id, fromBpName, false, lootBpContainer.id + 1, nextLootBpItemIndex + 1)
-            waitping()
+            wait(200,400)
         elseif itemID then
             moveobject(position, itemID, itemStackPos, destPosition, itemCount)
-            waitping()
+            wait(100,400)
         end
     end
 
